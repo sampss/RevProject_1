@@ -8,9 +8,11 @@ trait UserSettings {
 
   Class.forName(driverName);
 
-  val databaseName = "moviesinfo"
+  val databaseName = "default"
   val username = "hive"
   val password = "hive"
+  val path = "C:\\Users\\samps\\IdeaProjects\\RevProject_1\\src\\main\\scala\\"
+
 
   val con = DriverManager.getConnection(s"jdbc:hive2://localhost:10000/${databaseName}", username, password);
   val stmt = con.createStatement();
