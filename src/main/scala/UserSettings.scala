@@ -18,8 +18,6 @@ trait UserSettings {
   val stmt = con.createStatement();
 
 
-
-
 }
 
 

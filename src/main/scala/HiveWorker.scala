@@ -13,7 +13,7 @@ object HiveWorker extends UserSettings{
     try {
 
       // temp hardcode table to be used
-      val tableName = "user_info"
+      //val tableName = "user_info"  // this is going to have to be seperated from the query
 
 
       // CLI Interface
@@ -31,7 +31,7 @@ object HiveWorker extends UserSettings{
       }
 
 
-      database("copy", "airports.csv", "airports")
+      //database("copy", "airports.csv", "airports")
 
 
     } catch {
@@ -56,7 +56,7 @@ object HiveWorker extends UserSettings{
         }
 
       } catch {
-        case e => e.printStackTrace
+        case e => println("Case 1")//e.printStackTrace
       } finally {
         con.close()
       }
@@ -67,7 +67,7 @@ object HiveWorker extends UserSettings{
 
       val file = Source.fromFile(filePath)
       val tableExists = statement.executeQuery("SHOW TABLES LIKE 'airports'")
-      val filePath2 = s""" "${filePath}" """
+      val filePath2 = s""" "${filePath}" """  // seen a recommendation to use dbl quotes instead of single.. did not work
       //println(tableExists.next().getClass)
       //println(filePath2)
 
@@ -88,7 +88,7 @@ object HiveWorker extends UserSettings{
               println(uploadString)
               // run the upload csv file command
               //statement.execute(uploadString)
-              println("Data Added To Table From File")
+              println("Currently unable to load data into hive from .csv file on local drive.")
 
       }else{
 
