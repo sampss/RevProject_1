@@ -9,5 +9,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "RevProject_1",
     libraryDependencies += "org.apache.hive" % "hive-jdbc" % "3.1.2",
-    //excludeDependencies +=()
-  )
+    excludeDependencies ++= Seq(
+        ExclusionRule( "org.slf4j", "org.slf4j" )
+    ))
+

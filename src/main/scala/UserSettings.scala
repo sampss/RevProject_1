@@ -8,7 +8,7 @@ trait UserSettings {
 
   Class.forName(driverName);
 
-  val databaseName = "default"
+  val databaseName = "moviesinfo"
   val username = "hive"
   val password = "hive"
   val path = "C:\\Users\\samps\\IdeaProjects\\RevProject_1\\src\\main\\scala\\"

@@ -56,7 +56,7 @@ object HiveWorker extends UserSettings{
         }
 
       } catch {
-        case e => println("Case 1")//e.printStackTrace
+        case e => e.printStackTrace  //println("Case 1")
       } finally {
         con.close()
       }
@@ -178,7 +178,7 @@ object HiveWorker extends UserSettings{
       //println(sqlString)
 
       val returning = sqlString.toUpperCase.contains("RETURNING")
-      println(s"returning = ${returning}")
+      //println(s"returning = ${returning}")
       val keywordString = sqlString.toUpperCase
 
       val executeKeyword: String = {
@@ -186,16 +186,21 @@ object HiveWorker extends UserSettings{
           keywordString.contains("RENAME") || keywordString.contains("GRANT") || keywordString.contains("REVOKE") || keywordString.contains("COMMIT") ||
           keywordString.contains("ROLLBACK") || keywordString.contains("SAVEPOINT")) {
           if (returning == false) {
+            println("DDL E")
             "E"
           } else {
+            println("DDL Q")
             "Q"
           }
         } else if (keywordString.contains("SELECT")) {
+          println("SELECT")
           "Q"
         } else if (keywordString.contains("INSERT") || keywordString.contains("UPDATE") || keywordString.contains("DELETE")) {
           if (returning == false) {
+            println("DML U")
             "U"
           } else {
+            println("DML Q")
             "Q"
           }
         } else {
