@@ -31,7 +31,7 @@ object HiveWorker extends UserSettings{
       }
 
 
-      //database("copy", "airports.csv", "airports")
+      //database("SELECT user_id, AVG(rating) AS avg_rate FROM ratings WHERE ratings.movie_id IN (SELECT ratings.movie_id FROM ratings INNER JOIN movies ON ratings.movie_id = movies.movie_id AND movies.release_date RLIKE '.*(1996).*') GROUP BY user_id ORDER BY avg_rate DESC")
 
 
     } catch {
